@@ -132,10 +132,8 @@ void exibirInOrder(PONT raiz) {
 //------------------------------------------------------------------------------
 // 8) Contar nós distintos
 int contarNos(PONT raiz) {
-    // COMPLETAR
-    // Se raiz==NULL => 0
-    // Senao => 1 + contarNos(esq) + contarNos(dir)
-    return 0; // provisório
+    if (raiz == NULL) return 0;
+    return 1 + contarNos(raiz->esq) + contarNos(raiz->dir);
 }
 
 //------------------------------------------------------------------------------

@@ -121,8 +121,12 @@ PONT removerTodasOcorrencias(PONT raiz, int valor) {
 //------------------------------------------------------------------------------
 // 7) Exibir InOrder
 void exibirInOrder(PONT raiz) {
-    // COMPLETAR
-    // Percurso InOrder: esq -> (raiz->chave impresso contador vezes) -> dir
+    if (raiz == NULL) { 
+        exibirInOrder(raiz->esq);
+        for (int i = 0; i < raiz->contador; i++)
+            printf("%d ", raiz->chave);
+        exibirInOrder(raiz->dir);
+    }
 }
 
 //------------------------------------------------------------------------------

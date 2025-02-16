@@ -324,9 +324,9 @@ int main() {
     //              12(1) 18(1)
     //                  \
     //                  16(1)
-    inserir(raiz, 12);
-    inserir(raiz, 16);
-    inserir(raiz, 3);
+    raiz = inserir(raiz, 12);
+    raiz = inserir(raiz, 16);
+    raiz = inserir(raiz, 3);
 
     printf("\n--- Árvore após inserir(12,16,3) ---\n");
     printf("InOrder esperado: 3 5 5 12 15 16 18\n");

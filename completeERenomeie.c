@@ -121,12 +121,11 @@ PONT removerTodasOcorrencias(PONT raiz, int valor) {
 //------------------------------------------------------------------------------
 // 7) Exibir InOrder
 void exibirInOrder(PONT raiz) {
-    if (raiz == NULL) { 
-        exibirInOrder(raiz->esq);
-        for (int i = 0; i < raiz->contador; i++)
-            printf("%d ", raiz->chave);
-        exibirInOrder(raiz->dir);
-    }
+    if (raiz == NULL) return; 
+    exibirInOrder(raiz->esq);
+    for (int i = 0; i < raiz->contador; i++)
+        printf("%d ", raiz->chave);
+    exibirInOrder(raiz->dir);
 }
 
 //------------------------------------------------------------------------------
@@ -179,7 +178,7 @@ void imprimirIntervalo(PONT raiz, int min, int max) {
 PONT lowestCommonAncestor(PONT raiz, int val1, int val2) {
     if (raiz == NULL) return NULL;
 
-    if (val1 > raiz->chave && val2 < raiz->chave)
+    if (val1 < raiz->chave && val2 < raiz->chave)
         return lowestCommonAncestor(raiz->esq, val1, val2);
     else if (val1 > raiz->chave && val2 > raiz->chave)
         return lowestCommonAncestor(raiz->dir, val1, val2);
@@ -221,13 +220,13 @@ int main() {
     // InOrder final esperado (antes de quaisquer remoções):
     //     "5 5 5 10 10 15 18"
     //
-    inserir(raiz, 10); 
-    inserir(raiz, 5);
-    inserir(raiz, 15);
-    inserir(raiz, 10); // repetido => contador(10)++
-    inserir(raiz, 5);  // repetido => contador(5)++
-    inserir(raiz, 5);  // repetido => contador(5)++
-    inserir(raiz, 18);
+    raiz = inserir(raiz, 10); 
+    raiz = inserir(raiz, 5);
+    raiz = inserir(raiz, 15);
+    raiz = inserir(raiz, 10); // repetido => contador(10)++
+    raiz = inserir(raiz, 5);  // repetido => contador(5)++
+    raiz = inserir(raiz, 5);  // repetido => contador(5)++
+    raiz = inserir(raiz, 18);
 
     printf("\n--- APÓS INSERIR (10,5,15,10,5,5,18) ---\n");
     printf("InOrder esperado: 5 5 5 10 10 15 18\n");
